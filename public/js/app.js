@@ -23,13 +23,7 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider, $http
         },
         '': {
           templateUrl: 'views/thumbnails.html'
-        },
-        'sidebar': {
-          templateUrl: 'views/sidebar.html'
         }
-      },
-      onEnter: function(){
-        thumbnailCtrl.isSidebarHidden = false;
       }
     })
     .state('signin', {
@@ -54,11 +48,9 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider, $http
         }
       },
       onEnter: function(){
-        thumbnailCtrl.isSidebarHidden = true;
         thumbnailCtrl.expandFlex = true;
       },
       onExit: function(){
-        thumbnailCtrl.isSidebarHidden = false;
         thumbnailCtrl.expandFlex = false;
       }
     })
@@ -70,25 +62,10 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider, $http
         },
         '': {
           templateUrl: 'views/article.html'
-        },
-        'sidebar': {
-          templateUrl: 'views/sidebar.html'
         }
       },
       onEnter: function(){
         thumbnailCtrl.getThumbnails();
-      }
-    })
-    .state('comprar', {
-      url: '/comprar?id',
-      reloadOnSearch: false,
-      views: {
-        'mainToolbar': {
-          templateUrl: 'views/mainToolbar.html'
-        },
-        '': {
-          templateUrl:'views/comprar.html'
-        }
       }
     })
     .state('contacto', {
@@ -100,46 +77,6 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider, $http
         '': {
           templateUrl: 'views/contacto.html'
         }
-      },
-      onEnter: function(){
-        thumbnailCtrl.isSidebarHidden = true;
-      },
-      onExit: function(){
-        thumbnailCtrl.isSidebarHidden = false;
-      }
-    })
-    .state('emailsAdmin', {
-      url: '/admin/emails',
-      views: {
-        'mainToolbar': {
-          templateUrl: 'views/mainToolbar.html'
-        },
-        '': {
-          templateUrl: 'views/showEmails.html'
-        }
-      },
-      onEnter: function(){
-        thumbnailCtrl.isSidebarHidden = true;
-      },
-      onExit: function(){
-        thumbnailCtrl.isSidebarHidden = false;
-      }
-    })
-    .state('paymentDone', {
-      url: '/paymentDone',
-      views: {
-        'mainToolbar': {
-          templateUrl: 'views/mainToolbar.html'
-        },
-        '': {
-          templateUrl: 'views/paymentDone.html'
-        }
-      },
-      onEnter: function(){
-        thumbnailCtrl.isSidebarHidden = true;
-      },
-      onExit: function(){
-        thumbnailCtrl.isSidebarHidden = false;
       }
     });
 

@@ -39,39 +39,7 @@ exports.paymentPaypal = function(req, res){
     }
   });
 };
-exports.paymentCreditCard = function(req, res){
-  var paymentDetails = {
-    "intent": "sale",
-    "payer": {
-      "payment_method": "credit_card",
-      "funding_instruments": [{
-        "credit_card": {
-          "number": "5500005555555559",
-          "type": "mastercard",
-          "expire_month": 07,
-          "expire_year": 2017,
-          "cvv2": 123,
-          "first_name": "Merlox",
-          "last_name": "Grincalaitis"
-        }
-      }]
-    },
-    "transactions": [{
-      "amount": {
-        "total": "10.00",
-        "currency": "USD"
-      },
-      "description": "Example of a payment with credit card"
-    }]
-  };
-  paypal.payment.create(paymentDetails, function(err, payment){
-    if(err){
-      console.log(err);
-      return res.send(err)
-    }
-    return res.send(payment);
-  });
-};
+
 exports.paypalCallback = function(req, res){
   var paymentId = req.session.paymentId;
   var details = {'payer_id': req.query.PayerID};
